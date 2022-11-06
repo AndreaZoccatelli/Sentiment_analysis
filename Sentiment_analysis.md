@@ -1,6 +1,6 @@
-Amazon reviews sentiment analysis
+Amazon reviews scraping and sentiment analysis
 ================
-Book: Pre-suasion by RObert Cialdini
+Book: Pre-suasion by Robert Cialdini
 
 ### 0. Preparation: Load packages
 
@@ -244,7 +244,7 @@ data %>%
                                   face = "bold"))
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](Graphs/unnamed-chunk-8-1.png)<!-- -->
 
 #### 4.c Three-stars bias verification
 
@@ -266,7 +266,7 @@ table %>% ggplot(aes(x = "", y = score, fill = as.character(score))) +
                                   face = "bold"))
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](Graphs/unnamed-chunk-9-1.png)<!-- -->
 
 #### 4.d Sentiment classification
 
@@ -318,7 +318,7 @@ ggplot(data, aes(x=star_sent, y=nchar, fill=star_sent)) +
   scale_fill_manual(values=c("#e94022", "orange"))
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](Graphs/unnamed-chunk-13-1.png)<!-- -->
 
 ### 5. Tokenization
 
@@ -371,7 +371,7 @@ tidy_stem %>%
   theme_bw()
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](Graphs/unnamed-chunk-17-1.png)<!-- -->
 
 ``` r
 defaultW <- getOption("warn") 
@@ -383,7 +383,7 @@ tidy_stem %>%
                  min.freq = 2, random.order = F, rot.per = 0.15, colors = brewer.pal(8, "Paired")))
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](Graphs/unnamed-chunk-18-1.png)<!-- -->
 
 ``` r
 options(warn = defaultW)
@@ -406,7 +406,7 @@ tidy_stem %>%
   scale_fill_manual(values = c("#e94022", "orange")) + theme_bw()
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](Graphs/unnamed-chunk-19-1.png)<!-- -->
 
 ### 7. Bigrams
 
@@ -446,7 +446,7 @@ ggraph(bigram_graph, layout = "fr") + geom_edge_link(aes(edge_alpha = n),
                                                                 vjust = 1, hjust = 1) + theme_void()
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](Graphs/unnamed-chunk-20-1.png)<!-- -->
 
 #### 7.b Check combination with “pre”
 
@@ -479,7 +479,7 @@ ggraph(bigram_graph, layout = "fr") + geom_edge_link(aes(edge_alpha = n),
                                                                 vjust = 1, hjust = 1) + theme_void()
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](Graphs/unnamed-chunk-21-1.png)<!-- -->
 
 #### 7.d Overview on cooccurrences
 
@@ -543,7 +543,7 @@ summary(data$bing)
 hist(data$bing, col = "orange", main = "Sentiment distribution with bing")
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](Graphs/unnamed-chunk-24-1.png)<!-- -->
 
 #### 8.b Comparison between Bing and Afinn sentiment distributions
 
@@ -576,7 +576,7 @@ summary(data$afinn)
 hist(data$afinn, col = "orange", main = "Sentiment distribution with afinn")
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
+![](Graphs/unnamed-chunk-25-1.png)<!-- -->
 
 #### 8.c Contribution of words to the sentiment obtained with Bing
 
@@ -616,7 +616,7 @@ tidy_text %>%
 
     ## Joining, by = "word"
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+![](Graphs/unnamed-chunk-27-1.png)<!-- -->
 
 ``` r
 options(warn = defaultW)
@@ -637,7 +637,7 @@ ggraph(wordnetwork, layout = "fr") + geom_edge_link(aes(width = cooc,
                       subtitle = "Nouns & Adjective")
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+![](Graphs/unnamed-chunk-28-1.png)<!-- -->
 
 #### 8.e Verification of 3-stars sentiment using Bing dictionary
 
@@ -654,7 +654,7 @@ m
 hist(data_bing_3$bing, col = "orange", main = "Sentiment distribution for 3 stars reviews")
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+![](Graphs/unnamed-chunk-29-1.png)<!-- -->
 
 #### 8.f Nrc dictionary
 
@@ -681,7 +681,7 @@ data_nrc %>% filter(sentiment != "positive" & sentiment != "negative") %>%
                                   face = "bold"))
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
+![](Graphs/unnamed-chunk-31-1.png)<!-- -->
 
 #### 8.g comparison
 
@@ -747,7 +747,7 @@ sent_all %>% ggplot(aes(sentiment.std))+
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->
+![](Graphs/unnamed-chunk-35-1.png)<!-- -->
 
 ### 9. Udpipe approach
 
@@ -779,7 +779,7 @@ summary(data$udpipe)
 hist(data$udpipe, col = "orange", main = "Sentiment distribution - udpipe")
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
+![](Graphs/unnamed-chunk-36-1.png)<!-- -->
 
 #### 9.a comparison between Bing and Udpipe sentiment distributions
 
@@ -805,7 +805,7 @@ hist(scale(data$bing), col = "orange", main = "Sentiment distribution - bing")
 hist(scale(data$udpipe), col = "orange", main = "Sentiment distribution - udpipe")
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
+![](Graphs/unnamed-chunk-38-1.png)<!-- -->
 
 #### 9.c comparison between Bing, Stars and Udpipe sentiment classifications
 
@@ -823,4 +823,4 @@ data %>%
     "#e94022", "orange"))
 ```
 
-![](Anam_Zoccatelli_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
+![](Graphs/unnamed-chunk-39-1.png)<!-- -->
